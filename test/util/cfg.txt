@@ -1,0 +1,6 @@
+ip = 10.10.10.10
+port  =   48100
+LogEnable=    	true
+
+[Common]
+CommonItem = 123
