@@ -38,8 +38,8 @@ void SimpleLayout::FormatAndAppend(const LogRecord& record,
 	uint32 mills = record.timestamp % 1000;
 	char timetag[256];
 	struct tm& tm = get_current_tm();
-	sprintf(timetag, "%u-%02u-%02u %02u:%02u:%02u", tm.tm_year + 1900, tm.tm_mon,
-			tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+	sprintf(timetag, "%u-%02u-%02u %02u:%02u:%02u", tm.tm_year + 1900,
+			tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 	appender->Append("[%s,%03u]%s\n", timetag, mills, record.content.c_str());
 }
 
@@ -50,8 +50,8 @@ void VerboseLayout::FormatAndAppend(const LogRecord& record,
 	uint32 mills = record.timestamp % 1000;
 	char timetag[256];
 	struct tm& tm = get_current_tm();
-	sprintf(timetag, "%u-%02u-%02u %02u:%02u:%02u", tm.tm_year + 1900, tm.tm_mon,
-			tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+	sprintf(timetag, "%u-%02u-%02u %02u:%02u:%02u", tm.tm_year + 1900,
+			tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 	appender->Append("[%s,%03u][%s][%u][%s:%u]%s\n", timetag, mills,
 			record.level_str, getpid(), get_basename(record.file).c_str(),
 			record.fileno, record.content.c_str());

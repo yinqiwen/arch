@@ -10,7 +10,7 @@ using namespace arch::database;
 
 int main(int argc, char** argv)
 {
-    Connection* conn = ConnectionManager::CreateConnection(MYSQL);
+    Connection* conn = ConnectionManager::CreateConnection(MYSQL_DATABASE);
     Properties props;
     props["Host"] = "127.0.0.1";
     props["Port"] = "3306";

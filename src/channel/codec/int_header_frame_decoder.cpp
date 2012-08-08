@@ -32,8 +32,10 @@ bool IntegerHeaderFrameDecoder::Decode(ChannelHandlerContext& ctx, Channel* chan
 		buffer.SetReadIndex(read_idx);
 		return false;
 	}
-	//Buffer* msgbuf = NULL;
-	//NEW(msgbuf, Buffer);
+	if(!m_remove_len_header)
+	{
+		msg.Write(&len, sizeof(uint32));
+	}
 	msg.EnsureWritableBytes(m_header_calc_in_length?len - sizeof(len):len);
 	msg.Write(&buffer, m_header_calc_in_length?len - sizeof(len):len);
 	//FrameDecodeResult<Buffer> result(msgbuf, StandardDestructor<Buffer>);

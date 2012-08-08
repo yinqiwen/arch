@@ -18,8 +18,8 @@ namespace arch
         enum DataBaseType
         {
             INVALID = 0,
-            MYSQL = 1,
-            SQLITE3 = 2
+            MYSQL_DATABASE = 1,
+            SQLITE3_DATABASE = 2
         };
 
 

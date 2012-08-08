@@ -77,6 +77,7 @@ static int on_message_complete(http_parser* parser)
     ctx->message.SetHttpMajor(parser->http_major);
     ctx->message.SetHttpMinor(parser->http_minor);
     ChannelHandlerContext* handler = ctx->ctx;
+    ctx->decoding = false;
     fire_message_received<HTTPMessage>(*handler, &(ctx->message), NULL);
     ctx->Clear();
     return 0;

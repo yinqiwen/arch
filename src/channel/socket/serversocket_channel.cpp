@@ -80,7 +80,7 @@ bool ServerSocketChannel::DoBind(Address* local)
     if (InstanceOf<SocketHostAddress>(local).Value)
     {
         SocketHostAddress* host_addr = (SocketHostAddress*) local;
-        addr = getInetAddress(host_addr->GetHost(), host_addr->GetPort());
+        addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
     }
     else if (InstanceOf<SocketInetAddress>(local).Value)
     {
@@ -97,7 +97,7 @@ bool ServerSocketChannel::DoBind(Address* local)
             ERROR_LOG(
                     "unlink %s failed:%s", unix_addr->GetPath().c_str(), strerror(e));
         }
-        addr = getInetAddress(*unix_addr);
+        addr = get_inet_address(*unix_addr);
     }
     else
     {

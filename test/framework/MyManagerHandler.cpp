@@ -37,7 +37,7 @@ void MyManagerHandler::MessageReceived(ChannelHandlerContext& ctx,
 	g_manager_recv_counts++;
 	DatagramPacket* packet = e.GetMessage();
 	SocketInetAddress& inet_addr = packet->GetInetAddress();
-	SocketHostAddress host_addr = getHostAddress(inet_addr);
+	SocketHostAddress host_addr = get_host_address(inet_addr);
 	//    ServiceProcess* proc = m_manager->GetServiceProcess(1, 0);
 	bool ret = m_manager->GetIPCEventHandler().DispatchUdpMsg(1, 0,
 	        e.GetChannel(), packet->GetInetAddress(), packet->GetBuffer());

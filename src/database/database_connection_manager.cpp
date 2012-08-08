@@ -17,14 +17,14 @@ Connection* ConnectionManager::CreateConnection(DataBaseType type)
 	Connection* conn = NULL;
 	switch (type)
 	{
-		case MYSQL:
+		case MYSQL_DATABASE:
 		{
 #if HAVE_MYSQL_LIB == 1
 			NEW(conn, MySQLConnection);
 #endif
 			break;
 		}
-		case SQLITE3:
+		case SQLITE3_DATABASE:
 		{
 #if HAVE_SQLITE_LIB == 1
 			NEW(conn, SQLite3Connection);

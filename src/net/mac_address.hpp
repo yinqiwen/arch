@@ -35,7 +35,7 @@ namespace arch
                     memcpy(m_address, addr, sizeof(m_address));
                     m_isValid = true;
                 }
-                friend MACAddress arch::net::getMACAddress(
+                friend MACAddress arch::net::get_mac_address(
                         const std::string& nicName);
             public:
                 uint64_t ToUInt64();

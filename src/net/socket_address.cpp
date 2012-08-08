@@ -9,7 +9,7 @@
 
 using namespace arch::net;
 
-SocketAddress::SocketAddress(const string& host, uint32 port):SocketHostAddress(host,port),m_inet_addr(getInetAddress(host,port))
+SocketAddress::SocketAddress(const string& host, uint32 port):SocketHostAddress(host,port),m_inet_addr(get_inet_address(host,port))
 {
 
 }

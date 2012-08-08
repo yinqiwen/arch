@@ -419,6 +419,11 @@ namespace arch
             return ret;
         }
 
+        uint32 get_current_epoch_seconds()
+        {
+        	return time(NULL);
+        }
+
         struct tm& get_current_tm()
         {
             uint32 now = init_tm();
@@ -458,7 +463,7 @@ namespace arch
         uint8 get_current_month_day()
         {
             init_tm();
-            return k_tm.tm_mday;
+            return k_tm.tm_mday + 1;
         }
         uint8 get_current_minute_secs()
         {

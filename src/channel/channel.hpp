@@ -201,6 +201,11 @@ namespace arch
                     return m_inputBuffer.ReadableBytes();
                 }
 
+                inline void SkipReadBuffer(int32 size)
+                {
+                	m_inputBuffer.SetReadIndex(m_inputBuffer.GetReadIndex() + size);
+                }
+
                 inline void HandleReadEvent()
                 {
                     OnRead();

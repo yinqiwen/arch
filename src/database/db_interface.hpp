@@ -27,7 +27,7 @@ namespace arch
 				char** column_values;
 				uint32 n_columns;
 				Row() :
-					column_values(NULL), n_columns(0)
+						column_values(NULL), n_columns(0)
 				{
 				}
 		};
@@ -64,7 +64,7 @@ namespace arch
 					return -1;
 				}
 				CopiedRow(const Row& row) :
-					m_ref(NULL)
+						m_ref(NULL)
 				{
 					DeepCopy(row);
 				}
@@ -75,14 +75,13 @@ namespace arch
 
 				~CopiedRow()
 				{
-				    for(uint32 i = 0; i < m_row.n_columns; i++)
-				    {
-				        free(m_ref[i]);
-				    }
+					for (uint32 i = 0; i < m_row.n_columns; i++)
+					{
+						free(m_ref[i]);
+					}
 					DELETE_A(m_ref);
 				}
 		};
-
 
 		/*
 		 * just a simple encapsultion of pointer to struct st_mysql_res
@@ -93,8 +92,8 @@ namespace arch
 		class ResultSet
 		{
 			public:
-		        typedef std::vector<std::string> ColumnNameArray;
-		        virtual int ColumnNames(ColumnNameArray& names) = 0;
+				typedef std::vector<std::string> ColumnNameArray;
+				virtual int ColumnNames(ColumnNameArray& names) = 0;
 				virtual int Next(Row& row) = 0;
 				virtual int RowNum() = 0;
 				virtual int ColumnNum() = 0;
@@ -110,7 +109,8 @@ namespace arch
 			private:
 				ResultSet* m_result;
 				ResultSetDestructor* m_destructor;
-				inline void SetRawResultSet(ResultSet* set, ResultSetDestructor* destructor)
+				inline void SetRawResultSet(ResultSet* set,
+						ResultSetDestructor* destructor)
 				{
 					DestroyRawResultSet();
 					m_result = set;
@@ -118,7 +118,7 @@ namespace arch
 				}
 				inline void DestroyRawResultSet()
 				{
-					if(NULL != m_destructor)
+					if (NULL != m_destructor)
 					{
 						m_destructor(m_result);
 					}
@@ -127,7 +127,7 @@ namespace arch
 				friend class Connection;
 			public:
 				inline SQLResultSet() :
-					m_result(NULL),m_destructor(NULL)
+						m_result(NULL), m_destructor(NULL)
 				{
 				}
 				inline int Next(Row& row)
@@ -144,7 +144,7 @@ namespace arch
 				}
 				int ColumnNames(ResultSet::ColumnNameArray& names)
 				{
-				    return m_result->ColumnNames(names);
+					return m_result->ColumnNames(names);
 				}
 				inline ~SQLResultSet()
 				{
@@ -152,6 +152,17 @@ namespace arch
 				}
 		};
 
+		struct Statement
+		{
+			public:
+				virtual int BindText(int index, const char* value) = 0;
+				virtual int BindInt64(int index, int64 value) = 0;
+				virtual int Execute() = 0;
+				virtual int Close() = 0;
+				virtual ~Statement()
+				{
+				}
+		};
 
 		/*
 		 * represent a connection to database.
@@ -159,11 +170,13 @@ namespace arch
 		class Connection
 		{
 			protected:
-				void InjectRawResultSet(SQLResultSet& result, ResultSet* raw, ResultSetDestructor* destructor)
+				void InjectRawResultSet(SQLResultSet& result, ResultSet* raw,
+						ResultSetDestructor* destructor)
 				{
 					result.SetRawResultSet(raw, destructor);
 				}
 			public:
+				virtual Statement* PrepareStatement(const char* fmt, ...) = 0;
 				/*
 				 * execute update statements, such as insert, update, replace etc.
 				 */
@@ -173,7 +186,7 @@ namespace arch
 				 * return a ResultSet object containning query results
 				 */
 				virtual int ExecuteQuery(SQLResultSet& result, const char* fmt,
-				        ...) = 0;
+						...) = 0;
 
 				virtual int BeginTransaction()
 				{
@@ -201,7 +214,7 @@ namespace arch
 				/**
 				 * return a error number
 				 */
-				virtual int GetErrNum() const = 0;
+				virtual int GetErrCode() const = 0;
 
 				/**
 				 * return if this connection is alive
@@ -233,7 +246,7 @@ namespace arch
 				bool m_success;
 			public:
 				ConnectionTransactionGuard(Connection* conn) :
-					m_conn(conn), m_success(true)
+						m_conn(conn), m_success(true)
 				{
 					if (NULL != m_conn)
 					{

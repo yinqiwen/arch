@@ -60,7 +60,7 @@ namespace arch
                 virtual int BeginTransaction();
                 virtual int CommitTransaction();
                 virtual int RollBack();
-
+                Statement* PrepareStatement(const char* fmt, ...);
                 int VExecuteUpdate(const char* fmt, va_list ap);
                 int VExecuteQuery(MySQLResultSet* result, const char* fmt,
                         va_list ap);
@@ -89,7 +89,7 @@ namespace arch
                 /**
                  * return a error number
                  */
-                virtual int GetErrNum() const;
+                virtual int GetErrCode() const;
 
                 /**
                  * return if this connection is alive
@@ -113,9 +113,11 @@ namespace arch
                 int Init();
             public:
                 MySQLConnection();
+                struct st_mysql* GetMySQLHandler();
                 int Connect(const std::string& host, uint16 port,
                         const std::string& db, const std::string& user,
                         const std::string& passwd);
+                void InstallLoadDataHandler(int (*local_infile_init)(void **, const char *, void *), int (*local_infile_read)(void *, char *, unsigned int), void (*local_infile_end)(void *), int (*local_infile_error)(void *, char*, unsigned int), void *userdata);
                 ~MySQLConnection();
         };
     }

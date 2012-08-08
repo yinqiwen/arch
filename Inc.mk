@@ -22,8 +22,8 @@ MYSQL_PATH=$(3RD_LIB_DIST_PATH)/mysql-connector-c-6.0.2
 MYSQL_FILE=$(3RD_PATH)/mysql-connector-c-6.0.2.tar.gz
 MYSQL_LIB=$(MYSQL_PATH)/libmysql/libmysqlclient.a 
 
-SQLITE3_PATH=$(3RD_LIB_DIST_PATH)/sqlite-autoconf-3070701
-SQLITE3_FILE=$(3RD_PATH)/sqlite-autoconf-3070701.tar.gz
+SQLITE3_PATH=$(3RD_LIB_DIST_PATH)/sqlite-autoconf-3071300
+SQLITE3_FILE=$(3RD_PATH)/sqlite-autoconf-3071300.tar.gz
 SQLITE3_LIB=$(SQLITE3_PATH)/.libs/libsqlite3.a 
 
 SPARSEHASH_PATH=$(3RD_LIB_DIST_PATH)/sparsehash-2.0.2

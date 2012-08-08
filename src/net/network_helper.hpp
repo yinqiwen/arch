@@ -20,31 +20,31 @@ namespace arch
 {
 	namespace net
 	{
-		SocketInetAddress getInetAddress(const string& host, uint16 port);
-		SocketInetAddress getInetAddress(const SocketHostAddress& addr);
-		SocketInetAddress getInetAddress(const SocketUnixAddress& addr);
-		SocketHostAddress getHostAddress(const sockaddr& addr);
-		SocketHostAddress getHostAddress(const SocketInetAddress& addr);
-		SocketUnixAddress getUnixAddress(const sockaddr& addr);
-		SocketUnixAddress getUnixAddress(const SocketInetAddress& addr);
+		SocketInetAddress get_inet_address(const string& host, uint16 port);
+		SocketInetAddress get_inet_address(const SocketHostAddress& addr);
+		SocketInetAddress get_inet_address(const SocketUnixAddress& addr);
+		SocketHostAddress get_host_address(const sockaddr& addr);
+		SocketHostAddress get_host_address(const SocketInetAddress& addr);
+		SocketUnixAddress get_unix_address(const sockaddr& addr);
+		SocketUnixAddress get_unix_address(const SocketInetAddress& addr);
 
 		SocketInetAddress
-		getSocketInetAddress(int32 fd);
+		get_socket_inet_address(int32 fd);
 		SocketHostAddress
-		getHostAddress(int32 fd);
+		get_host_address(int32 fd);
 		SocketInetAddress
-		getRemoteInetAddress(int32 fd);
+		get_remote_inet_address(int32 fd);
 		SocketHostAddress
-		getRemoteHostAddress(int32 fd);
+		get_remote_host_address(int32 fd);
 
 		uint64 ntohll(uint64 v);
 		uint64 htonll(uint64 v);
 
-		MACAddress getMACAddress(const std::string& nicName);
-		list<MACAddress> getAllMACAddresses();
+		MACAddress get_mac_address(const std::string& nicName);
+		list<MACAddress> get_all_mac_addresses();
 
-		int getIPByNICName(const std::string& ifName, std::string& ip);
-		int getLocalHostIPList(std::vector<std::string>& iplist);
+		int get_ip_by_nic_name(const std::string& ifName, std::string& ip);
+		int get_local_host_ip_list(std::vector<std::string>& iplist);
 	}
 }
 

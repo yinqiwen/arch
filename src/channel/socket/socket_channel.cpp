@@ -86,7 +86,7 @@ bool SocketChannel::DoBind(Address* local)
 	if (InstanceOf<SocketHostAddress> (local).Value)
 	{
 		SocketHostAddress* host_addr = static_cast<SocketHostAddress*> (local);
-		addr = getInetAddress(host_addr->GetHost(), host_addr->GetPort());
+		addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
 	}
 	else if (InstanceOf<SocketInetAddress> (local).Value)
 	{
@@ -97,7 +97,7 @@ bool SocketChannel::DoBind(Address* local)
 	{
 		SocketUnixAddress* unix_addr = (SocketUnixAddress*) local;
 		unlink(unix_addr->GetPath().c_str()); // in case it already exists
-		addr = getInetAddress(*unix_addr);
+		addr = get_inet_address(*unix_addr);
 	}
 	else
 	{
@@ -129,7 +129,7 @@ bool SocketChannel::DoConnect(Address* remote)
 	if (InstanceOf<SocketHostAddress> (remote).Value)
 	{
 		SocketHostAddress* host_addr = static_cast<SocketHostAddress*> (remote);
-		addr = getInetAddress(host_addr->GetHost(), host_addr->GetPort());
+		addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
 	}
 	else if (InstanceOf<SocketInetAddress> (remote).Value)
 	{
@@ -139,7 +139,7 @@ bool SocketChannel::DoConnect(Address* remote)
 	else if (InstanceOf<SocketUnixAddress> (remote).Value)
 	{
 		SocketUnixAddress* unix_addr = static_cast<SocketUnixAddress*> (remote);
-		addr = getInetAddress(*unix_addr);
+		addr = get_inet_address(*unix_addr);
 	}
 	else
 	{
@@ -175,15 +175,15 @@ const Address* SocketChannel::GetLocalAddress()
 			//			SocketHostAddress local = getHostAddress(m_fd);
 			//			NEW(m_localAddr, SocketHostAddress(local));
 
-			SocketInetAddress inet = getSocketInetAddress(m_fd);
+			SocketInetAddress inet = get_socket_inet_address(m_fd);
 			if (inet.IsUnix())
 			{
-				SocketUnixAddress local = getUnixAddress(inet);
+				SocketUnixAddress local = get_unix_address(inet);
 				NEW(m_localAddr, SocketUnixAddress(local));
 			}
 			else
 			{
-				SocketHostAddress local = getHostAddress(inet);
+				SocketHostAddress local = get_host_address(inet);
 				NEW(m_localAddr, SocketHostAddress(local));
 			}
 		}
@@ -200,15 +200,15 @@ const Address* SocketChannel::GetRemoteAddress()
 	{
 		try
 		{
-			SocketInetAddress inet = getRemoteInetAddress(m_fd);
+			SocketInetAddress inet = get_remote_inet_address(m_fd);
 			if (inet.IsUnix())
 			{
-				SocketUnixAddress remote = getUnixAddress(inet);
+				SocketUnixAddress remote = get_unix_address(inet);
 				NEW(m_remoteAddr, SocketUnixAddress(remote));
 			}
 			else
 			{
-				SocketHostAddress remote = getHostAddress(inet);
+				SocketHostAddress remote = get_host_address(inet);
 				NEW(m_remoteAddr, SocketHostAddress(remote));
 			}
 

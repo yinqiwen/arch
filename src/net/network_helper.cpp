@@ -23,12 +23,12 @@ namespace arch
     namespace net
     {
         static const uint16 kMaxNICCount = 16;
-        SocketInetAddress getInetAddress(const SocketHostAddress& addr)
+        SocketInetAddress get_inet_address(const SocketHostAddress& addr)
         {
-            return getInetAddress(addr.GetHost().c_str(), addr.GetPort());
+            return get_inet_address(addr.GetHost().c_str(), addr.GetPort());
         }
 
-        SocketInetAddress getInetAddress(const SocketUnixAddress& unix_addr)
+        SocketInetAddress get_inet_address(const SocketUnixAddress& unix_addr)
         {
             struct sockaddr_un addr;
             memset(&addr, 0, sizeof(addr));
@@ -39,7 +39,7 @@ namespace arch
             return SocketInetAddress(addr);
         }
 
-        SocketInetAddress getInetAddress(const string& host, uint16 port)
+        SocketInetAddress get_inet_address(const string& host, uint16 port)
         {
             struct addrinfo hints;
             struct addrinfo* res = NULL;
@@ -83,7 +83,7 @@ namespace arch
             return ret;
         }
 
-        SocketHostAddress getHostAddress(const sockaddr& addr)
+        SocketHostAddress get_host_address(const sockaddr& addr)
         {
             SocketHostAddress invalid("", 0);
             int size;
@@ -115,23 +115,23 @@ namespace arch
             }
         }
 
-        SocketUnixAddress getUnixAddress(const sockaddr& addr)
+        SocketUnixAddress get_unix_address(const sockaddr& addr)
         {
             struct sockaddr_un* pun = (struct sockaddr_un*) &addr;
             const char* path = pun->sun_path;
             return SocketUnixAddress(path);
         }
-        SocketUnixAddress getUnixAddress(const SocketInetAddress& addr)
+        SocketUnixAddress get_unix_address(const SocketInetAddress& addr)
         {
-            return getUnixAddress(addr.GetRawSockAddr());
+            return get_unix_address(addr.GetRawSockAddr());
         }
 
-        SocketHostAddress getHostAddress(const SocketInetAddress& addr)
+        SocketHostAddress get_host_address(const SocketInetAddress& addr)
         {
-            return getHostAddress(addr.GetRawSockAddr());
+            return get_host_address(addr.GetRawSockAddr());
         }
 
-        SocketInetAddress getSocketInetAddress(int32 fd)
+        SocketInetAddress get_socket_inet_address(int32 fd)
         {
             char temp[256];
             memset(&temp, 0, sizeof(temp));
@@ -158,13 +158,13 @@ namespace arch
             return SocketInetAddress();
         }
 
-        SocketHostAddress getHostAddress(int32 fd)
+        SocketHostAddress get_host_address(int32 fd)
         {
-            SocketInetAddress inetaddr = getSocketInetAddress(fd);
-            return getHostAddress(inetaddr);
+            SocketInetAddress inetaddr = get_socket_inet_address(fd);
+            return get_host_address(inetaddr);
         }
 
-        SocketInetAddress getRemoteInetAddress(int32 fd)
+        SocketInetAddress get_remote_inet_address(int32 fd)
         {
 
             char temp[256];
@@ -193,10 +193,10 @@ namespace arch
             return SocketInetAddress();
         }
 
-        SocketHostAddress getRemoteHostAddress(int32 fd)
+        SocketHostAddress get_remote_host_address(int32 fd)
         {
-            SocketInetAddress inetaddr = getRemoteInetAddress(fd);
-            return getHostAddress(inetaddr);
+            SocketInetAddress inetaddr = get_remote_inet_address(fd);
+            return get_host_address(inetaddr);
         }
 
         uint64 htonll(uint64 v)
@@ -221,7 +221,7 @@ namespace arch
             return htonll(v);
         }
 
-        MACAddress getMACAddress(const std::string& nicName)
+        MACAddress get_mac_address(const std::string& nicName)
         {
             struct ifreq ifreq;
             memset(&ifreq, 0, sizeof(ifreq));
@@ -243,7 +243,7 @@ namespace arch
             return addr;
         }
 
-        list<MACAddress> getAllMACAddresses()
+        list<MACAddress> get_all_mac_addresses()
         {
             list<MACAddress> resultList;
             struct ifconf ifc;
@@ -267,13 +267,13 @@ namespace arch
             uint32_t nicCount = ifc.ifc_len / sizeof(struct ifreq);
             for (uint32_t i = 0; i < nicCount; ++i)
             {
-                MACAddress addr = getMACAddress(ifreqs[i].ifr_name);
+                MACAddress addr = get_mac_address(ifreqs[i].ifr_name);
                 resultList.push_back(addr);
             }
             return resultList;
         }
 
-        int getIPByNICName(const std::string& ifName, std::string& ip)
+        int get_ip_by_nic_name(const std::string& ifName, std::string& ip)
         {
             int fd;
             int intrface;
@@ -305,7 +305,7 @@ namespace arch
 
                 if (0 == strcmp(ifName.c_str(), ifr[intrface].ifr_name))
                 {
-                    SocketHostAddress addr = getHostAddress(
+                    SocketHostAddress addr = get_host_address(
                             ifr[intrface].ifr_addr);
                     ip = addr.GetHost();
                     ::close(fd);
@@ -317,7 +317,7 @@ namespace arch
             return -1;
         }
 
-        int getLocalHostIPList(std::vector<std::string>& iplist)
+        int get_local_host_ip_list(std::vector<std::string>& iplist)
         {
             int fd;
             int intrface;
@@ -347,7 +347,7 @@ namespace arch
                 if (NULL == ifr[intrface].ifr_name)
                     continue;
 
-                SocketHostAddress addr = getHostAddress(ifr[intrface].ifr_addr);
+                SocketHostAddress addr = get_host_address(ifr[intrface].ifr_addr);
                 std::string ip = addr.GetHost();
                 iplist.push_back(ip);
             }

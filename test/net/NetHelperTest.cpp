@@ -14,10 +14,10 @@ TEST(network_helper, getRemoteHostAddress)
 {
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in addr;
-    SocketInetAddress address = getInetAddress("127.0.0.1", 48100);
+    SocketInetAddress address = get_inet_address("127.0.0.1", 48100);
     if(0 == connect(fd,&(address.GetRawSockAddr()), sizeof(struct sockaddr)))
     {
-        SocketHostAddress host = getRemoteHostAddress(fd);
+        SocketHostAddress host = get_remote_host_address(fd);
         EXPECT_EQ(48100, host.GetPort());
         string str = "127.0.0.1";
         EXPECT_EQ(str, host.GetHost());
@@ -31,7 +31,7 @@ TEST(network_helper, getRemoteHostAddress)
     }
     else
     {
-        SocketHostAddress host = getRemoteHostAddress(fd);
+        SocketHostAddress host = get_remote_host_address(fd);
         const char* cause = strerror(errno);
         printf("%s\n", cause);
         printf("%s:%u\n", host.GetHost().c_str(), host.GetPort());

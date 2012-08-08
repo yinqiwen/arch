@@ -68,6 +68,7 @@ namespace arch
         uint64 get_current_epoch_millis();
         uint64 get_current_epoch_micros();
         uint64 get_current_epoch_nanos();
+        uint32 get_current_epoch_seconds();
 
         uint32 get_current_year_day();
         uint32 get_current_hour();
