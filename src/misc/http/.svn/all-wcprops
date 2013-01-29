@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/445/trunk/arch/src/misc/http
+END
+http_parser.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/445/trunk/arch/src/misc/http/http_parser.h
+END
+http_parser.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/445/trunk/arch/src/misc/http/http_parser.c
+END

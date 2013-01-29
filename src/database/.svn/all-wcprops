@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/471/trunk/arch/src/database
+END
+sqlite3_db_impl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/443/trunk/arch/src/database/sqlite3_db_impl.hpp
+END
+mysql_db_impl.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/443/trunk/arch/src/database/mysql_db_impl.hpp
+END
+database_connection_manager.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/443/trunk/arch/src/database/database_connection_manager.hpp
+END
+sqlite3_db_impl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/471/trunk/arch/src/database/sqlite3_db_impl.cpp
+END
+db_interface.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/443/trunk/arch/src/database/db_interface.hpp
+END
+mysql_db_impl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/443/trunk/arch/src/database/mysql_db_impl.cpp
+END
+database_connection_manager.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/443/trunk/arch/src/database/database_connection_manager.cpp
+END

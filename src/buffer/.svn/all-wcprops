@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/508/trunk/arch/src/buffer
+END
+buffer.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/508/trunk/arch/src/buffer/buffer.hpp
+END
+buffer_factory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/376/trunk/arch/src/buffer/buffer_factory.cpp
+END
+struct_code_templates.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/343/trunk/arch/src/buffer/struct_code_templates.hpp
+END
+CodeGen.java
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/343/trunk/arch/src/buffer/CodeGen.java
+END
+buffer_factory.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/254/trunk/arch/src/buffer/buffer_factory.hpp
+END
+shm_byte_array.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/254/trunk/arch/src/buffer/shm_byte_array.cpp
+END
+buffer_helper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/376/trunk/arch/src/buffer/buffer_helper.cpp
+END
+buffer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/304/trunk/arch/src/buffer/buffer.cpp
+END
+struct_codec_macros.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/381/trunk/arch/src/buffer/struct_codec_macros.hpp
+END
+shm_byte_array.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/254/trunk/arch/src/buffer/shm_byte_array.hpp
+END
+buffer_helper.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/376/trunk/arch/src/buffer/buffer_helper.hpp
+END

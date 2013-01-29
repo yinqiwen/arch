@@ -1,0 +1,16 @@
+Loggers=Develop,Monitor
+
+[Develop]
+Level=INFO
+#0:No Thread 1:Singleton Thread 2:Thread per logger
+ThreadMode=0
+Appender[0].Class=arch.logging.RollingFileAppender
+Appender[0].Layout=arch.logging.VerboseLayout
+Appender[0].MaxBackupIndex=10
+Appender[0].File=${__PROC_NAME__}.log
+Appender[0].MaxFileSize=20MB
+Appender[1].Class=arch.logging.ConsoleAppender
+
+[Monitor]
+Appender[0].Class=arch.logging.RollingFileAppender
+Appender[0].File=monitor.log

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/496/trunk/arch/src/misc/crypto
+END
+sha1.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/329/trunk/arch/src/misc/crypto/sha1.h
+END
+crc32.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/329/trunk/arch/src/misc/crypto/crc32.h
+END
+bloom_filter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/298/trunk/arch/src/misc/crypto/bloom_filter.hpp
+END
+md5.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/302/trunk/arch/src/misc/crypto/md5.cpp
+END
+se.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/496/trunk/arch/src/misc/crypto/se.c
+END
+rc4.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/496/trunk/arch/src/misc/crypto/rc4.c
+END
+md5.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/302/trunk/arch/src/misc/crypto/md5.hpp
+END
+crc32.c
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/321/trunk/arch/src/misc/crypto/crc32.c
+END
+sha1.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/329/trunk/arch/src/misc/crypto/sha1.c
+END
+se.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/496/trunk/arch/src/misc/crypto/se.h
+END
+rc4.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/496/trunk/arch/src/misc/crypto/rc4.h
+END

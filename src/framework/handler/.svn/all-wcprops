@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/508/trunk/arch/src/framework/handler
+END
+service_ipc_event_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/328/trunk/arch/src/framework/handler/service_ipc_event_handler.hpp
+END
+io_ipc_event_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/508/trunk/arch/src/framework/handler/io_ipc_event_handler.cpp
+END
+ipc_event_decoder.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/310/trunk/arch/src/framework/handler/ipc_event_decoder.cpp
+END
+service_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/354/trunk/arch/src/framework/handler/service_handler.hpp
+END
+manager_ipc_event_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/360/trunk/arch/src/framework/handler/manager_ipc_event_handler.cpp
+END
+io_ipc_event_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/363/trunk/arch/src/framework/handler/io_ipc_event_handler.hpp
+END
+ipc_event_decoder.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/254/trunk/arch/src/framework/handler/ipc_event_decoder.hpp
+END
+manager_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/175/trunk/arch/src/framework/handler/manager_handler.cpp
+END
+io_process_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/469/trunk/arch/src/framework/handler/io_process_handler.hpp
+END
+manager_ipc_event_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/353/trunk/arch/src/framework/handler/manager_ipc_event_handler.hpp
+END
+ipc_event_encoder.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/329/trunk/arch/src/framework/handler/ipc_event_encoder.cpp
+END
+manager_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/298/trunk/arch/src/framework/handler/manager_handler.hpp
+END
+dispatcher_ipc_event_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/353/trunk/arch/src/framework/handler/dispatcher_ipc_event_handler.cpp
+END
+ipc_event_encoder.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/295/trunk/arch/src/framework/handler/ipc_event_encoder.hpp
+END
+dispatcher_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/287/trunk/arch/src/framework/handler/dispatcher_handler.cpp
+END
+dispatcher_ipc_event_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/291/trunk/arch/src/framework/handler/dispatcher_ipc_event_handler.hpp
+END
+dispatcher_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/354/trunk/arch/src/framework/handler/dispatcher_handler.hpp
+END
+service_ipc_event_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/508/trunk/arch/src/framework/handler/service_ipc_event_handler.cpp
+END
+service_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/195/trunk/arch/src/framework/handler/service_handler.cpp
+END

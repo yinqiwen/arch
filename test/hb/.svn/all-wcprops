@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/509/trunk/arch/test/hb
+END
+http_benchmark.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/506/trunk/arch/test/hb/http_benchmark.hpp
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/506/trunk/arch/test/hb/main.cpp
+END
+http_benchmark.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/509/trunk/arch/test/hb/http_benchmark.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/504/trunk/arch/test/hb/Makefile
+END

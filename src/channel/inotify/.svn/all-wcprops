@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/374/trunk/arch/src/channel/inotify
+END
+inotify_channel.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/374/trunk/arch/src/channel/inotify/inotify_channel.hpp
+END
+inotify_channel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/374/trunk/arch/src/channel/inotify/inotify_channel.cpp
+END

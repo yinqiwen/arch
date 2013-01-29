@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/343/trunk/arch/src/misc/utf8
+END
+unchecked.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/343/trunk/arch/src/misc/utf8/unchecked.h
+END
+checked.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/343/trunk/arch/src/misc/utf8/checked.h
+END
+core.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/343/trunk/arch/src/misc/utf8/core.h
+END

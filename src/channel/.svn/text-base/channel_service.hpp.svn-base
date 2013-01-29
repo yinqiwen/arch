@@ -1,0 +1,149 @@
+/*
+ * ChannelService.hpp
+ *
+ *  Created on: 2011-1-9
+ *      Author: wqy
+ */
+
+#ifndef NOVA_CHANNELSERVICE_HPP_
+#define NOVA_CHANNELSERVICE_HPP_
+#include "net/socket_host_address.hpp"
+#include "net/datagram_packet.hpp"
+#include "channel/channel_event.hpp"
+#include "channel/fifo/fifo_channel.hpp"
+#include "channel/fifo/shm_fifo_channel.hpp"
+#include "channel/timer/timer_channel.hpp"
+#include "channel/signal/signal_channel.hpp"
+#include "channel/signal/soft_signal_channel.hpp"
+#include "channel/socket/clientsocket_channel.hpp"
+#include "channel/socket/datagram_channel.hpp"
+#include "channel/socket/serversocket_channel.hpp"
+#include "channel/inotify/inotify_channel.hpp"
+#include "timer/timer.hpp"
+#include "logging/logger_macros.hpp"
+#include <map>
+#include <list>
+#include <set>
+#include <utility>
+#include <tr1/unordered_map>
+
+using std::map;
+using std::list;
+using std::pair;
+using std::make_pair;
+using arch::net::SocketHostAddress;
+using arch::net::DatagramPacket;
+using arch::channel::socket::SocketChannel;
+using arch::channel::socket::ServerSocketChannel;
+using arch::channel::socket::ClientSocketChannel;
+using arch::channel::socket::DatagramChannel;
+using arch::channel::fifo::FIFOChannel;
+using arch::channel::fifo::SharedMemoryFIFOChannel;
+using arch::channel::fifo::SharedMemoryFIFOChannel;
+using arch::channel::timer::TimerChannel;
+using arch::channel::signal::SignalChannel;
+using arch::channel::signal::SoftSignalChannel;
+using arch::timer::Timer;
+
+namespace arch
+{
+    namespace channel
+    {
+        enum ChannelSoftSignal
+        {
+            CHANNEL_REMOVE = 1
+        };
+        /**
+         * 创建/销毁所有类型的channel，管理基本的Event Loop
+         */
+        class ChannelService: public Runnable, public SoftSignalHandler
+        {
+            private:
+                typedef std::list<uint32> RemoveChannelQueue;
+                typedef std::tr1::unordered_map<uint32, Channel*> ChannelTable;
+                ChannelTable m_channel_table;
+                aeEventLoop* m_eventLoop;
+                TimerChannel* m_timer;
+                SignalChannel* m_signal_channel;
+                SoftSignalChannel* m_self_soft_signal_channel;
+                RemoveChannelQueue m_remove_queue;
+                bool m_running;
+                bool EventSunk(ChannelPipeline* pipeline, ChannelEvent& e)
+                {
+                    ERROR_LOG("Not support this operation!Please register a channel handler to handle this event.");
+                    return false;
+                }
+                bool EventSunk(ChannelPipeline* pipeline, ChannelStateEvent& e);
+                bool EventSunk(ChannelPipeline* pipeline,
+                        MessageEvent<Buffer>& e);
+                bool EventSunk(ChannelPipeline* pipeline, MessageEvent<
+                        DatagramPacket>& e);
+
+                void OnSoftSignal(uint32 soft_signo, uint32 appendinfo);
+                //list<Channel*> m_deleting_queue;
+                //void Add2DeleteChannelQueue(Channel* ch);
+                void Run();
+                friend class arch::channel::Channel;
+                friend class arch::channel::ChannelPipeline;
+                friend class arch::channel::ChannelHandlerContext;
+                friend class arch::channel::socket::SocketChannel;
+                friend class arch::channel::socket::ClientSocketChannel;
+                friend class arch::channel::socket::ServerSocketChannel;
+                friend class arch::channel::socket::DatagramChannel;
+                friend class arch::channel::fifo::FIFOChannel;
+                friend class arch::channel::fifo::SharedMemoryFIFOChannel;
+                friend class arch::channel::timer::TimerChannel;
+                friend class arch::channel::signal::SignalChannel;
+
+                TimerChannel* NewTimerChannel();
+                SignalChannel* NewSignalChannel();
+
+                Channel* CloneChannel(Channel* ch);
+
+                void DeleteFIFOChannel(FIFOChannel* ch);
+                void DeleteClientSocketChannel(ClientSocketChannel* ch);
+                void DeleteServerSocketChannel(ServerSocketChannel* ch);
+                void DeleteDatagramChannel(DatagramChannel* ch);
+                void DeleteSharedMemoryFIFOChannel(SharedMemoryFIFOChannel* ch);
+                void DeleteChannel(Channel* ch);
+                void RemoveChannel(Channel* ch);
+                void VerifyRemoveQueue();
+            public:
+                ChannelService(uint32 setsize = 10240);
+                void Routine();
+                Channel* GetChannel(uint32 channelID);
+                Timer& GetTimer();
+                SignalChannel& GetSignalChannel();
+                SoftSignalChannel* NewSoftSignalChannel();
+                FIFOChannel* NewFIFOChannel();
+                SharedMemoryFIFOChannel* NewSharedMemoryFIFOChannel();
+                ClientSocketChannel* NewClientSocketChannel();
+                ServerSocketChannel* NewServerSocketChannel();
+                DatagramChannel* NewDatagramSocketChannel();
+                InotifyChannel* NewInotifyChannel();
+
+                Channel* AttachChannel(Channel* ch);
+                bool DetachChannel(Channel* ch);
+
+                //In most time , you should not invoke this method
+                inline aeEventLoop* GetRawEventLoop()
+                {
+                    return m_eventLoop;
+                }
+                /**
+                 * 启动Event loop
+                 * @self_routine 是否自行例行check
+                 */
+                void Start(bool self_routine = true);
+                /**
+                 * 退出Event loop
+                 */
+                void Stop();
+                void CloseAllChannels();
+                void CloseAllChannelFD(std::set<Channel*>& exceptions);
+                ~ChannelService();
+        };
+    }
+}
+
+#endif /* CHANNELSERVICE_HPP_ */

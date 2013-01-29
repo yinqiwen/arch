@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/443/trunk/arch/test/dispatcher2
+END
+MyManagerProcess.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/360/trunk/arch/test/dispatcher2/MyManagerProcess.cpp
+END
+MyDispatcherHandler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyDispatcherHandler.hpp
+END
+MyDispatcherProcess.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyDispatcherProcess.hpp
+END
+MyFramework.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyFramework.cpp
+END
+MyManagerProcess.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyManagerProcess.hpp
+END
+MyServiceHandler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyServiceHandler.cpp
+END
+MyNetworkEventDispatcherHandler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/443/trunk/arch/test/dispatcher2/MyNetworkEventDispatcherHandler.cpp
+END
+MyServiceHandler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyServiceHandler.hpp
+END
+MyServiceProcess.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyServiceProcess.hpp
+END
+MyDispatcherHandler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/360/trunk/arch/test/dispatcher2/MyDispatcherHandler.cpp
+END
+MyNetworkEventDispatcherHandler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/354/trunk/arch/test/dispatcher2/MyNetworkEventDispatcherHandler.hpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/355/trunk/arch/test/dispatcher2/Makefile
+END

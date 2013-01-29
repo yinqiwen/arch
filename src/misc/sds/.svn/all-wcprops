@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/344/trunk/arch/src/misc/sds
+END
+sds.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/344/trunk/arch/src/misc/sds/sds.h
+END
+sds.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/344/trunk/arch/src/misc/sds/sds.c
+END

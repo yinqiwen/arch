@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/511/trunk/arch
+END
+Inc.mk
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/435/trunk/arch/Inc.mk
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/176/trunk/arch/.project
+END
+.cproject
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/492/trunk/arch/.cproject
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/443/trunk/arch/Makefile
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3
+END
+sqlite3.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3/sqlite3.c
+END
+shell.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3/shell.c
+END
+sqlite3.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3/sqlite3.h
+END
+sqlite3ext.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3/sqlite3ext.h
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/381/trunk/arch/3rd/sqlite3/README
+END

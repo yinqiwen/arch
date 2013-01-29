@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic
+END
+atomic_unknown.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_unknown.h
+END
+atomic_arm.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_arm.h
+END
+atomic_sparc64.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_sparc64.h
+END
+atomic_ppc.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_ppc.h
+END
+atomic_x86.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_x86.h
+END
+atomic_alpha.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_alpha.h
+END
+atomic_native.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_native.h
+END
+atomic_sparc.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_sparc.h
+END
+atomic_common.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_common.h
+END
+atomic_mips2.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/238/trunk/arch/src/concurrent/atomic/atomic_mips2.h
+END

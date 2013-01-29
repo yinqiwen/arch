@@ -1,0 +1,70 @@
+10
+
+dir
+511
+https://swordbox.googlecode.com/svn/trunk/arch/test
+https://swordbox.googlecode.com/svn
+
+
+
+2013-01-25T07:51:07.795918Z
+509
+wangqiying
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3886d682-62aa-f212-92fd-f5781465e192
+
+concurrent
+dir
+
+database
+dir
+
+server
+dir
+
+net
+dir
+
+dispatcher
+dir
+
+dispatcher2
+dir
+
+channel
+dir
+
+buffer
+dir
+
+hb
+dir
+
+misc
+dir
+
+ipc
+dir
+
+framework
+dir
+
+util
+dir
+
+client
+dir
+

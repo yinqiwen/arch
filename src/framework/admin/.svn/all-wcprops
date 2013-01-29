@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/287/trunk/arch/src/framework/admin
+END
+admin_message_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/238/trunk/arch/src/framework/admin/admin_message_handler.hpp
+END
+admin_command_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/266/trunk/arch/src/framework/admin/admin_command_handler.cpp
+END
+admin_command_handler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/238/trunk/arch/src/framework/admin/admin_command_handler.hpp
+END
+admin_message_handler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/287/trunk/arch/src/framework/admin/admin_message_handler.cpp
+END

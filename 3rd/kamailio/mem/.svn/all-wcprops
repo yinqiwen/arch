@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem
+END
+ll_malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/ll_malloc.c
+END
+meminfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/meminfo.h
+END
+sf_malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/sf_malloc.c
+END
+memdbg.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/memdbg.h
+END
+ll_malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/ll_malloc.h
+END
+sf_malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/sf_malloc.h
+END
+f_malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/f_malloc.c
+END
+mem.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/mem.c
+END
+memtest.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/memtest.c
+END
+f_malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/f_malloc.h
+END
+mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/mem.h
+END
+shm_mem.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/shm_mem.c
+END
+dl_malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/dl_malloc.c
+END
+q_malloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/q_malloc.c
+END
+src_loc.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/src_loc.h
+END
+dl_config.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/dl_config.h
+END
+shm_mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/shm_mem.h
+END
+dl_malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/dl_malloc.h
+END
+q_malloc.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/180/trunk/arch/3rd/kamailio/mem/q_malloc.h
+END
