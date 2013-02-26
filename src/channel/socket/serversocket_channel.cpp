@@ -243,10 +243,12 @@ void ServerSocketChannel::OnRead()
 					m_pipeline_finallizer_user_data);
 		}
 		ch->SetParent(this);
-        SocketHostAddress* remote = NULL;
-        //SocketHostAddress tmp = get_host_address(*sa);
-        NEW(remote, SocketHostAddress(get_host_address(*sa)));
-		ch->setRemoteAddress(remote);
+		if (sa->sa_family != AF_UNIX)
+		{
+			SocketHostAddress* remote = NULL;
+			NEW(remote, SocketHostAddress(get_host_address(*sa)));
+			ch->setRemoteAddress(remote);
+		}
 
 		DEBUG_LOG(
 				"Server channel(%u) Accept a client channel(%u) for fd:%d", GetID(), ch->GetID(), fd);
