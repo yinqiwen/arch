@@ -29,78 +29,66 @@ namespace arch
 				uint32 m_max_size;
 				bool GetLRUElement(value_type& value, bool remove)
 				{
-					if (m_cache_list.empty())
+					if(m_cache_list.empty())
 					{
 						return false;
 					}
 					CacheEntry& entry = m_cache_list.back();
 					value = entry.second;
-					if (remove)
-					{
-						m_entry_map.erase(entry.first);
-						m_cache_list.pop_back();
-					}
-					return true;
+                    if(remove)
+                    {
+                    	m_entry_map.erase(entry.first);
+                    	m_cache_list.pop_back();
+                    }
+				    return true;
 				}
 			public:
-				LRUCache(uint32 max_size = 1024)
-						: m_max_size(max_size)
+				LRUCache(uint32 max_size = 1024) :
+						m_max_size(max_size)
 				{
 				}
 				void SetMaxCacheSize(uint32 size)
 				{
-					m_max_size = size;
+				    m_max_size = size;
+				}
+				void Clear()
+				{
+					m_cache_list.clear();
+					m_entry_map.clear();
 				}
 				bool GetLRUElement(value_type& value)
 				{
-					return GetLRUElement(value, true);
+                    return GetLRUElement(value, true);
 				}
 				bool PeekLRUElement(value_type& value)
 				{
-					return GetLRUElement(value, false);
+				    return GetLRUElement(value, false);
 				}
-
-				bool Get(const key_type& key, value_type& value, bool update =
-						true)
+				bool Get(const key_type& key, value_type& value)
 				{
 					typename CacheEntryMap::iterator found = m_entry_map.find(
-							key);
+					        key);
 					if (found != m_entry_map.end())
 					{
 						typename CacheList::iterator list_it = found->second;
 						value = list_it->second;
-						if (update)
-						{
-							m_cache_list.erase(list_it);
-							m_cache_list.push_front(std::make_pair(key, value));
-							m_entry_map[key] = m_cache_list.begin();
-						}
-						return true;
-					}
-					return false;
-				}
-				bool Erase(const key_type& key)
-				{
-					typename CacheEntryMap::iterator found = m_entry_map.find(
-							key);
-					if (found != m_entry_map.end())
-					{
-						m_cache_list.erase(found->second);
-						m_entry_map.erase(found);
+						m_cache_list.erase(list_it);
+						m_cache_list.push_front(std::make_pair(key, value));
+						m_entry_map[key] = m_cache_list.begin();
 						return true;
 					}
 					return false;
 				}
 				bool Insert(const key_type& key, const value_type& value,
-						value_type& erased)
+				        value_type& erased)
 				{
 					typename CacheEntryMap::iterator found = m_entry_map.find(
-							key);
+					        key);
 					bool erased_old = false;
 					if (found != m_entry_map.end())
 					{
-						erased_old = true;
-						erased = found->second->second;
+					    erased_old = true;
+					    erased = found->second->second;
 						m_cache_list.erase(found->second);
 					}
 					m_cache_list.push_front(std::make_pair(key, value));
