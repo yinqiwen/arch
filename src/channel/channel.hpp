@@ -90,7 +90,7 @@ namespace arch
                 ChannelOptions() :
                     shm_fifo_length_limit(2000), connect_timeout_millis(0),
                             receive_buffer_size(0), send_buffer_size(0),
-                            tcp_nodelay(false), keep_alive(true),
+                            tcp_nodelay(true), keep_alive(true),
                             reuse_address(true),
                             user_write_buffer_water_mark(0),
                             user_write_buffer_flush_timeout_mills(0),
