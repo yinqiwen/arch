@@ -55,7 +55,7 @@ namespace arch
                 return false;
             }
             Address* conn_addr = const_cast<Address*>(remote_address);
-            if (InstanceOf<SocketHostAddress>(conn_addr).Value)
+            if (InstanceOf<SocketHostAddress>(conn_addr).OK)
             {
                 SocketHostAddress* host_addr = (SocketHostAddress*) conn_addr;
                 address = (*host_addr);
@@ -72,7 +72,7 @@ namespace arch
                 return false;
             }
             Address* conn_addr = const_cast<Address*>(remote_address);
-            if (InstanceOf<SocketHostAddress>(conn_addr).Value)
+            if (InstanceOf<SocketHostAddress>(conn_addr).OK)
             {
                 SocketHostAddress* host_addr = (SocketHostAddress*) conn_addr;
                 address = (*host_addr);

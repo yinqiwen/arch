@@ -405,12 +405,12 @@ bool IOIPCEventHandler::NotifyServiceSocketConnected(Channel* channel,
 		return false;
 	}
 	Address* conn_addr = const_cast<Address*>(remote_address);
-	if (InstanceOf<SocketHostAddress>(conn_addr).Value)
+	if (InstanceOf<SocketHostAddress>(conn_addr).OK)
 	{
 		SocketHostAddress* host_addr = (SocketHostAddress*) conn_addr;
 		event.SetAddress(host_addr);
 	}
-	else if (InstanceOf<SocketUnixAddress>(conn_addr).Value)
+	else if (InstanceOf<SocketUnixAddress>(conn_addr).OK)
 	{
 		SocketUnixAddress* unix_addr = (SocketUnixAddress*) conn_addr;
 		event.SetUnixAddress(unix_addr);

@@ -85,15 +85,15 @@ bool SocketChannel::DoBind(Address* local)
 		return false;
 	}
 	SocketInetAddress addr;
-	if (InstanceOf<SocketHostAddress>(local).Value)
+	if (InstanceOf<SocketHostAddress>(local).OK)
 	{
 		SocketHostAddress* host_addr = static_cast<SocketHostAddress*>(local);
 		addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
-	} else if (InstanceOf<SocketInetAddress>(local).Value)
+	} else if (InstanceOf<SocketInetAddress>(local).OK)
 	{
 		SocketInetAddress* inet_addr = static_cast<SocketInetAddress*>(local);
 		addr = (*inet_addr);
-	} else if (InstanceOf<SocketUnixAddress>(local).Value)
+	} else if (InstanceOf<SocketUnixAddress>(local).OK)
 	{
 		SocketUnixAddress* unix_addr = (SocketUnixAddress*) local;
 		unlink(unix_addr->GetPath().c_str()); // in case it already exists
@@ -124,15 +124,15 @@ bool SocketChannel::DoConnect(Address* remote)
 		return false;
 	}
 	SocketInetAddress addr;
-	if (InstanceOf<SocketHostAddress>(remote).Value)
+	if (InstanceOf<SocketHostAddress>(remote).OK)
 	{
 		SocketHostAddress* host_addr = static_cast<SocketHostAddress*>(remote);
 		addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
-	} else if (InstanceOf<SocketInetAddress>(remote).Value)
+	} else if (InstanceOf<SocketInetAddress>(remote).OK)
 	{
 		SocketInetAddress* inet_addr = static_cast<SocketInetAddress*>(remote);
 		addr = (*inet_addr);
-	} else if (InstanceOf<SocketUnixAddress>(remote).Value)
+	} else if (InstanceOf<SocketUnixAddress>(remote).OK)
 	{
 		SocketUnixAddress* unix_addr = static_cast<SocketUnixAddress*>(remote);
 		addr = get_inet_address(*unix_addr);

@@ -28,7 +28,7 @@ void DispatcerIPCEventHandler::ChannelConnected(ChannelHandlerContext& ctx,
     Address* remote = const_cast<Address*> (ch->GetRemoteAddress());
     if (NULL != remote)
     {
-        if (InstanceOf<SocketUnixAddress> (remote).Value)
+        if (InstanceOf<SocketUnixAddress> (remote).OK)
         {
             SocketUnixAddress* un = (SocketUnixAddress*) remote;
             const std::string& path = un->GetPath();

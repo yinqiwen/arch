@@ -72,15 +72,15 @@ bool ServerSocketChannel::DoBind(Address* local)
 	}
 	int on = 1;
 	SocketInetAddress addr;
-	if (InstanceOf<SocketHostAddress>(local).Value)
+	if (InstanceOf<SocketHostAddress>(local).OK)
 	{
 		SocketHostAddress* host_addr = (SocketHostAddress*) local;
 		addr = get_inet_address(host_addr->GetHost(), host_addr->GetPort());
-	} else if (InstanceOf<SocketInetAddress>(local).Value)
+	} else if (InstanceOf<SocketInetAddress>(local).OK)
 	{
 		SocketInetAddress* inet_addr = (SocketInetAddress*) local;
 		addr = (*inet_addr);
-	} else if (InstanceOf<SocketUnixAddress>(local).Value)
+	} else if (InstanceOf<SocketUnixAddress>(local).OK)
 	{
 		SocketUnixAddress* unix_addr = (SocketUnixAddress*) local;
 		int ret = unlink(unix_addr->GetPath().c_str()); // in case it already exists

@@ -27,7 +27,7 @@ void AdminMessageHandler::GetRemoteHostPort(ChannelHandlerContext& ctx,
 	if (NULL != addr)
 	{
 		Address* address = const_cast<Address*> (addr);
-		if (InstanceOf<SocketHostAddress> (address).Value)
+		if (InstanceOf<SocketHostAddress> (address).OK)
 		{
 			SocketHostAddress* host_addr =
 			        static_cast<SocketHostAddress*> (address);

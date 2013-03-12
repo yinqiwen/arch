@@ -25,16 +25,16 @@ namespace arch
 		struct InstanceOf
 		{
 			public:
-				bool Value;
+				bool OK;
 				template<typename BaseType>
 				inline InstanceOf(const BaseType* ptr) :
-					Value(false)
+					OK(false)
 				{
 					if (NULL != ptr)
 					{
 						const InheritType* sp =
 						        dynamic_cast<const InheritType*> (ptr);
-						Value = (NULL != sp);
+						OK = (NULL != sp);
 					}
 				}
 		};

@@ -29,7 +29,7 @@ void ManagerIPCEventHandler::ChannelConnected(ChannelHandlerContext& ctx,
 	Address* local = const_cast<Address*>(ch->GetLocalAddress());
 	if (NULL != remote)
 	{
-		if (InstanceOf<SocketUnixAddress>(remote).Value)
+		if (InstanceOf<SocketUnixAddress>(remote).OK)
 		{
 			SocketUnixAddress* un = (SocketUnixAddress*) remote;
 			SocketUnixAddress* lun = (SocketUnixAddress*) local;

@@ -31,7 +31,7 @@ void ServiceIPCEventHandler::ChannelConnected(ChannelHandlerContext& ctx,
 	Channel* ch = ctx.GetChannel();
 	Address* addr = const_cast<Address*>(ch->GetRemoteAddress());
 	Address* localaddr = const_cast<Address*>(ch->GetLocalAddress());
-	if (NULL != addr && InstanceOf<SocketUnixAddress>(addr).Value)
+	if (NULL != addr && InstanceOf<SocketUnixAddress>(addr).OK)
 	{
 		SocketUnixAddress* un = (SocketUnixAddress*) addr;
 		SocketUnixAddress* un1 = (SocketUnixAddress*) localaddr;
@@ -55,7 +55,7 @@ void ServiceIPCEventHandler::ChannelClosed(ChannelHandlerContext& ctx,
 	Channel* ch = ctx.GetChannel();
 	Address* addr = const_cast<Address*>(ch->GetRemoteAddress());
 	Address* localaddr = const_cast<Address*>(ch->GetLocalAddress());
-	if (NULL != addr && InstanceOf<SocketUnixAddress>(addr).Value)
+	if (NULL != addr && InstanceOf<SocketUnixAddress>(addr).OK)
 	{
 		SocketUnixAddress* un = (SocketUnixAddress*) addr;
 		SocketUnixAddress* un1 = (SocketUnixAddress*) localaddr;
