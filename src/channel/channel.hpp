@@ -71,221 +71,220 @@ using namespace arch::util;
 
 namespace arch
 {
-    namespace channel
-    {
-        struct ChannelOptions
-        {
-                uint32 shm_fifo_length_limit;
-                uint32 connect_timeout_millis;
-                uint32 receive_buffer_size;
-                uint32 send_buffer_size;
-                bool tcp_nodelay;
-                bool keep_alive;
-                bool reuse_address;
-                uint32 user_write_buffer_water_mark;
-                uint32 user_write_buffer_flush_timeout_mills;
-                uint32 delay_read_mills;
-                uint32 max_write_buffer_size;
+	namespace channel
+	{
+		struct ChannelOptions
+		{
+				uint32 shm_fifo_length_limit;
+				uint32 connect_timeout_millis;
+				uint32 receive_buffer_size;
+				uint32 send_buffer_size;
+				bool tcp_nodelay;
+				bool keep_alive;
+				bool reuse_address;
+				uint32 user_write_buffer_water_mark;
+				uint32 user_write_buffer_flush_timeout_mills;
+				uint32 max_write_buffer_size;
 
-                ChannelOptions() :
-                    shm_fifo_length_limit(2000), connect_timeout_millis(0),
-                            receive_buffer_size(0), send_buffer_size(0),
-                            tcp_nodelay(true), keep_alive(true),
-                            reuse_address(true),
-                            user_write_buffer_water_mark(0),
-                            user_write_buffer_flush_timeout_mills(0),
-                            delay_read_mills(1), max_write_buffer_size(0)
-                {
-                }
-        };
-        template<typename T>
-        bool write_channel(Channel* channel, T* message,
-                typename Type<T>::Destructor* destructor);
+				ChannelOptions()
+						: shm_fifo_length_limit(2000), connect_timeout_millis(
+								0), receive_buffer_size(0), send_buffer_size(0), tcp_nodelay(
+								true), keep_alive(true), reuse_address(true), user_write_buffer_water_mark(
+								0), user_write_buffer_flush_timeout_mills(0), max_write_buffer_size(
+								0)
+				{
+				}
+		};
+		template<typename T>
+		bool write_channel(Channel* channel, T* message,
+				typename Type<T>::Destructor* destructor);
 
-        class Channel;
-        typedef int ChannelOperationBarrierHook(Channel*, void*);
-        typedef void ChannelIOEventCallback(struct aeEventLoop *eventLoop,
-                                int fd, void *clientData, int mask);
+		class Channel;
+		typedef int ChannelOperationBarrierHook(Channel*, void*);
+		typedef void ChannelIOEventCallback(struct aeEventLoop *eventLoop,
+				int fd, void *clientData, int mask);
 
-        class ChannelService;
-        class Channel: public Runnable
-        {
-            private:
-                bool DoClose(bool inDestructor);
-            protected:
-                static void IOEventCallback(struct aeEventLoop *eventLoop,
-                        int fd, void *clientData, int mask);
-                ChannelOptions m_options;
-                bool m_user_configed;
-                bool m_has_removed;
-                uint32 m_parent_id;
-                ChannelPipeline m_pipeline;
-                ChannelService& m_service;
-                /**
-                 *  Channel ID
-                 *  ==============
-                 *
-                 *  Offset:  0                          27    31
-                 *           +--------------------------+------+
-                 *  Fields:  | Incremental  ID          | Type |
-                 *           +--------------------------+------+
-                 *
-                 */
-                uint32 m_id;
-                int m_fd;
-                Buffer m_inputBuffer;
-                Buffer m_outputBuffer;
-                int32 m_flush_timertask_id;
-                ChannelPipelineInitializer* m_pipeline_initializor;
-                void* m_pipeline_initailizor_user_data;
-                ChannelPipelineFinalizer* m_pipeline_finallizer;
-                void* m_pipeline_finallizer_user_data;
-                bool m_detached;
-                bool m_writable;
-                bool m_close_after_write;
+		class ChannelService;
+		class Channel: public Runnable
+		{
+			private:
+				bool DoClose(bool inDestructor);
+			protected:
+				static void IOEventCallback(struct aeEventLoop *eventLoop,
+						int fd, void *clientData, int mask);
+				ChannelOptions m_options;
+				bool m_user_configed;
+				bool m_has_removed;
+				uint32 m_parent_id;
+				ChannelPipeline m_pipeline;
+				ChannelService& m_service;
+				/**
+				 *  Channel ID
+				 *  ==============
+				 *
+				 *  Offset:  0                          27    31
+				 *           +--------------------------+------+
+				 *  Fields:  | Incremental  ID          | Type |
+				 *           +--------------------------+------+
+				 *
+				 */
+				uint32 m_id;
+				int m_fd;
+				Buffer m_inputBuffer;
+				Buffer m_outputBuffer;
+				int32 m_flush_timertask_id;
+				ChannelPipelineInitializer* m_pipeline_initializor;
+				void* m_pipeline_initailizor_user_data;
+				ChannelPipelineFinalizer* m_pipeline_finallizer;
+				void* m_pipeline_finallizer_user_data;
+				bool m_detached;
+				bool m_writable;
+				bool m_close_after_write;
 
-                Channel(Channel* parent, ChannelService& factory);
+				Channel(Channel* parent, ChannelService& factory);
 
-                void Run();
+				void Run();
 
-                virtual void OnChildClose(Channel* ch)
-                {
-                }
+				virtual void OnChildClose(Channel* ch)
+				{
+				}
 
-                virtual void OnRead();
-                virtual void OnWrite();
+				virtual void OnRead();
+				virtual void OnWrite();
 
+				virtual bool DoConfigure(const ChannelOptions& options);
+				virtual bool DoOpen();
+				virtual bool DoBind(Address* local);
+				virtual bool DoConnect(Address* remote);
+				virtual bool DoClose();
+				virtual bool DoFlush();
+				virtual int32 WriteNow(Buffer* buffer);
+				virtual int32 ReadNow(Buffer* buffer);
+				virtual int32 HandleExceptionEvent(int32 event);
+				int HandleIOError(int err);
 
-                virtual bool DoConfigure(const ChannelOptions& options);
-                virtual bool DoOpen();
-                virtual bool DoBind(Address* local);
-                virtual bool DoConnect(Address* remote);
-                virtual bool DoClose();
-                virtual bool DoFlush();
-                virtual int32 WriteNow(Buffer* buffer);
-                virtual int32 ReadNow(Buffer* buffer);
-                virtual int32 HandleExceptionEvent(int32 event);
-                int HandleIOError(int err);
+				void EnableWriting();
+				void DisableWriting();
+				void CancelFlushTimerTask();
+				void CreateFlushTimerTask();
 
-                void EnableWriting();
-                void DisableWriting();
-                void CancelFlushTimerTask();
-                void CreateFlushTimerTask();
+				friend class ChannelService;
+			public:
+				virtual int GetWriteFD();
+				virtual int GetReadFD();
+				inline uint32 GetID()
+				{
+					return m_id;
+				}
+				inline uint32 GetParentID()
+				{
+					return m_parent_id;
+				}
+				inline void SetParent(Channel* parent)
+				{
+					m_parent_id = parent->GetID();
+				}
+				inline ChannelService& GetService()
+				{
+					return m_service;
+				}
 
-                friend class ChannelService;
-            public:
-                virtual int GetWriteFD();
-                virtual int GetReadFD();
-                inline uint32 GetID()
-                {
-                    return m_id;
-                }
-                inline uint32 GetParentID()
-                {
-                    return m_parent_id;
-                }
-                inline void SetParent(Channel* parent)
-                {
-                    m_parent_id = parent->GetID();
-                }
-                inline ChannelService& GetService()
-                {
-                    return m_service;
-                }
+				inline uint32 WritableBytes()
+				{
+					return m_outputBuffer.ReadableBytes();
+				}
 
-                inline uint32 WritableBytes()
-                {
-                    return m_outputBuffer.ReadableBytes();
-                }
+				inline uint32 ReadableBytes()
+				{
+					return m_inputBuffer.ReadableBytes();
+				}
 
-                inline uint32 ReadableBytes()
-                {
-                    return m_inputBuffer.ReadableBytes();
-                }
+				inline void SkipReadBuffer(int32 size)
+				{
+					m_inputBuffer.SetReadIndex(
+							m_inputBuffer.GetReadIndex() + size);
+				}
 
-                inline void SkipReadBuffer(int32 size)
-                {
-                	m_inputBuffer.SetReadIndex(m_inputBuffer.GetReadIndex() + size);
-                }
+				inline void HandleReadEvent()
+				{
+					OnRead();
+				}
 
-                inline void HandleReadEvent()
-                {
-                    OnRead();
-                }
+				inline bool IsDetached()
+				{
+					return m_detached;
+				}
+				bool SetIOEventCallback(ChannelIOEventCallback* cb, int mask,
+						void* data);
+				bool Configure(const ChannelOptions& options);
+				bool Open();
+				bool Bind(Address* local);
+				bool Connect(Address* remote);
 
-                inline bool IsDetached()
-                {
-                    return m_detached;
-                }
-                bool SetIOEventCallback(ChannelIOEventCallback* cb, int mask, void* data);
-                bool Configure(const ChannelOptions& options);
-                bool Open();
-                bool Bind(Address* local);
-                bool Connect(Address* remote);
+				inline bool IsReadReady()
+				{
+					return GetReadFD() > 0;
+				}
+				inline bool IsWriteReady()
+				{
+					return GetWriteFD() > 0;
+				}
+				inline bool IsClosed()
+				{
+					return GetReadFD() < 0;
+				}
+				virtual bool AttachFD(int fd);
+				virtual bool AttachFD();
+				virtual void DetachFD();
 
-                inline bool IsReadReady()
-                {
-                    return GetReadFD() > 0;
-                }
-                inline bool IsWriteReady()
-                {
-                    return GetWriteFD() > 0;
-                }
-                inline bool IsClosed()
-                {
-                    return GetReadFD() < 0;
-                }
-                virtual bool AttachFD(int fd);
-                virtual bool AttachFD();
-                virtual void DetachFD();
+				inline void SetChannelPipelineInitializor(
+						ChannelPipelineInitializer* initializor, void* data =
+								NULL)
+				{
+					ASSERT(
+							NULL == m_pipeline_initializor && NULL != initializor);
+					m_pipeline_initializor = initializor;
+					m_pipeline_initailizor_user_data = data;
+					m_pipeline_initializor(&m_pipeline, data);
+				}
 
-                inline void SetChannelPipelineInitializor(
-                        ChannelPipelineInitializer* initializor, void* data =
-                                NULL)
-                {
-                    ASSERT(NULL == m_pipeline_initializor && NULL != initializor);
-                    m_pipeline_initializor = initializor;
-                    m_pipeline_initailizor_user_data = data;
-                    m_pipeline_initializor(&m_pipeline, data);
-                }
-
-                inline void SetChannelPipelineFinalizer(
-                        ChannelPipelineFinalizer* finallizer, void* data = NULL)
-                {
-                    ASSERT(NULL != finallizer);
-                    m_pipeline_finallizer = finallizer;
-                    m_pipeline_finallizer_user_data = data;
-                }
+				inline void SetChannelPipelineFinalizer(
+						ChannelPipelineFinalizer* finallizer, void* data = NULL)
+				{
+					ASSERT(NULL != finallizer);
+					m_pipeline_finallizer = finallizer;
+					m_pipeline_finallizer_user_data = data;
+				}
 
 //                virtual void SetChannelAcceptOperationBarrierHook(
 //                        ChannelOperationBarrierHook* hook, void* data)
 //                {
 //                }
 
-                inline ChannelPipeline& GetPipeline()
-                {
-                    return m_pipeline;
-                }
+				inline ChannelPipeline& GetPipeline()
+				{
+					return m_pipeline;
+				}
 
-                template<typename T>
-                bool Write(T& msg)
-                {
-                    return write_channel<T> (this, &msg, NULL);
-                }
+				template<typename T>
+				bool Write(T& msg)
+				{
+					return write_channel<T>(this, &msg, NULL);
+				}
 
-                bool Flush();
-                virtual const Address* GetLocalAddress()
-                {
-                    return NULL;
-                }
-                virtual const Address* GetRemoteAddress()
-                {
-                    return NULL;
-                }
-                bool Close();
-                virtual ~Channel();
-        };
-    }
+				bool Flush();
+				virtual const Address* GetLocalAddress()
+				{
+					return NULL;
+				}
+				virtual const Address* GetRemoteAddress()
+				{
+					return NULL;
+				}
+				bool Close();
+				virtual ~Channel();
+		};
+	}
 }
 
 #endif /* CHANNEL_HPP_ */
