@@ -60,7 +60,6 @@ SharedMemoryFIFOChannel::SharedMemoryFIFOChannel(ChannelService& factory) :
 
 bool SharedMemoryFIFOChannel::DoConfigure(const ChannelOptions& options)
 {
-    m_len_limit = options.shm_fifo_length_limit;
     if (options.user_write_buffer_flush_timeout_mills == 0)
     {
         ERROR_LOG("'user_write_buffer_flush_timeout_mills' must be non-zero value.");
