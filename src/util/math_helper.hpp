@@ -15,6 +15,7 @@ namespace arch
 	{
 		uint32 upper_power_of_two(uint32 t);
 		int32 random_int32();
+		uint32 digits10(uint64 v);
 	}
 }
 

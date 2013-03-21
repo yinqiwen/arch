@@ -95,6 +95,8 @@ namespace arch
             return str_todouble(str.c_str(), value);
         }
 
+        int fast_itoa(char* str, uint32 strlen, uint64 i);
+
         bool url_encode(const std::string& sIn, std::string& sOut);
         bool url_decode(const std::string& sIn, std::string& sb);
         int wstring_to_codec_string(const std::wstring &input, std::string& out, const char* codec);
