@@ -104,7 +104,7 @@ TEST(Object, InstanceOf)
     uint32 i = 0;
     for (; i < 10000; i++)
     {
-        if (InstanceOf<Buffer> (&buf1).Value)
+        if (InstanceOf<Buffer> (&buf1).OK)
         {
             continue;
         }

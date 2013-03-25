@@ -5,6 +5,7 @@
  *      Author: qiyingwang
  */
 #include "util/string_helper.hpp"
+#include "util/math_helper.hpp"
 #include <ctype.h>
 #include <iconv.h>
 #include <errno.h>
@@ -617,6 +618,41 @@ namespace arch
 				return false;
 			}
 			return str.rfind(suffix) == str.size() - suffix.size();
+		}
+
+		int fast_itoa(char* dst, uint32 dstlen, uint64 value)
+		{
+			static const char digits[201] =
+					"0001020304050607080910111213141516171819"
+							"2021222324252627282930313233343536373839"
+							"4041424344454647484950515253545556575859"
+							"6061626364656667686970717273747576777879"
+							"8081828384858687888990919293949596979899";
+			uint32_t const length = digits10(value);
+			if (length >= dstlen)
+			{
+				return -1;
+			}
+			uint32_t next = length - 1;
+			while (value >= 100)
+			{
+			    uint32 i = (value % 100) * 2;
+				value /= 100;
+				dst[next] = digits[i + 1];
+				dst[next - 1] = digits[i];
+				next -= 2;
+			}
+			// Handle last 1-2 digits
+			if (value < 10)
+			{
+				dst[next] = '0' + uint32_t(value);
+			} else
+			{
+				uint32 i = uint32(value) * 2;
+				dst[next] = digits[i + 1];
+				dst[next - 1] = digits[i];
+			}
+			return length;
 		}
 	}
 }

@@ -91,8 +91,9 @@ void Logger::Log(LogLevel level, const char* file, const char* function,
 		{
 			return;
 		}
-		if ((size_t) sz < log_line_size)
+		if ((size_t) sz < log_line_size || log_line_size >= 1024*1024)
 		{
+			content[log_line_size] = 0;
 			record.content = content;
 			break;
 		}
