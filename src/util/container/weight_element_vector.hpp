@@ -9,6 +9,7 @@
 #define WEIGHT_ELEMENT_VECTOR_HPP_
 
 #include "common/base.hpp"
+#include <algorithm>
 #include <vector>
 namespace arch
 {
