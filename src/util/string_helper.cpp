@@ -141,13 +141,15 @@ namespace arch
 		}
 
 		int string_replace(std::string& str, const std::string& pattern,
-				const std::string& newpat) {
+				const std::string& newpat)
+		{
 			int count = 0;
 			const size_t nsize = newpat.size();
 			const size_t psize = pattern.size();
 
 			for (size_t pos = str.find(pattern, 0); pos != std::string::npos;
-					pos = str.find(pattern, pos + nsize)) {
+					pos = str.find(pattern, pos + nsize))
+			{
 				str.replace(pos, psize, newpat);
 				count++;
 			}
@@ -636,7 +638,7 @@ namespace arch
 			uint32_t next = length - 1;
 			while (value >= 100)
 			{
-			    uint32 i = (value % 100) * 2;
+				uint32 i = (value % 100) * 2;
 				value /= 100;
 				dst[next] = digits[i + 1];
 				dst[next - 1] = digits[i];
@@ -654,5 +656,42 @@ namespace arch
 			}
 			return length;
 		}
+		int compare_version(const std::string& v1, const std::string& v2)
+		{
+			std::vector<std::string> ss1 = split_string(v1, ".");
+			std::vector<std::string> ss2 = split_string(v2, ".");
+			std::vector<uint32> vv1, vv2;
+			for (uint32 i = 0; i < ss1.size(); i++)
+			{
+				uint32 v = 0;
+				string_touint32(ss1[i], v);
+				vv1.push_back(v);
+			}
+			for (uint32 i = 0; i < ss2.size(); i++)
+			{
+				uint32 v = 0;
+				string_touint32(ss2[i], v);
+				vv2.push_back(v);
+			}
+
+			for (uint32 i = 0; i < ss2.size() && i < ss1.size(); i++)
+			{
+				if (vv1[i] < vv2[i])
+				{
+					return -1;
+				}
+				if (vv1[i] > vv2[i])
+				{
+					return 1;
+				}
+			}
+			if (ss1.size() == ss2.size())
+			{
+				return 0;
+			}
+			return ss1.size() > ss2.size() ? 1 : -1;
+		}
+
 	}
+
 }

@@ -111,6 +111,8 @@ namespace arch
 
         bool has_prefix(const std::string& str, const std::string& prefix);
         bool has_suffix(const std::string& str, const std::string& suffix);
+
+        int compare_version(const std::string& v1, const std::string& v2);
     }
 }
 
