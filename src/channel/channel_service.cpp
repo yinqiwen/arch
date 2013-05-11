@@ -326,6 +326,20 @@ InotifyChannel* ChannelService::NewInotifyChannel()
     return ch;
 }
 
+PipeChannel* ChannelService::NewPipeChannel(int readFd, int writeFD)
+{
+	PipeChannel* ch = NULL;
+	NEW(ch, PipeChannel(*this, readFd, writeFD));
+	if (NULL != ch)
+	{
+		Channel* c = ch;
+		c->m_id = (((c->m_id) << 4) + FIFO_CHANNEL_ID_BIT_MASK);
+		m_channel_table[c->m_id] = c;
+		ch->GetPipeline().Attach(ch);
+	}
+	return ch;
+}
+
 void ChannelService::RemoveChannel(Channel* ch)
 {
     if (NULL != ch)
