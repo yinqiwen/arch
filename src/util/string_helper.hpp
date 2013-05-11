@@ -26,8 +26,9 @@ namespace arch
         std::vector<std::string> split_string(const std::string& str,
                 const std::string& sep);
         void split_string(const std::string& strs, const std::string& sp, std::vector<std::string>& res);
-        std::string replace_string(const std::string& str,
-                const std::string& set);
+
+        int string_replace(std::string& str, const std::string& pattern,
+                		const std::string& newpat);
 
         char* str_tolower(char* str);
         char* str_toupper(char* str);
@@ -110,6 +111,8 @@ namespace arch
 
         bool has_prefix(const std::string& str, const std::string& prefix);
         bool has_suffix(const std::string& str, const std::string& suffix);
+
+        int compare_version(const std::string& v1, const std::string& v2);
     }
 }
 

@@ -25,7 +25,6 @@ namespace arch
             public:
                 typedef std::vector<Buffer*> ArgumentArray;
             private:
-
                 bool m_is_inline;
                 ArgumentArray m_args;
                 Buffer* GetNextArgument(size_t len);
