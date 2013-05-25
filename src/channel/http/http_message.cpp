@@ -23,9 +23,11 @@ bool HTTPMessage::AppendHeaderName(sds s)
 {
     if (NULL != m_current_header_name)
     {
-        ERROR_LOG("No value set for header:%s", m_current_header_name);
-        sdsfree(s);
-        return false;
+    	sdscat(m_current_header_name, s);
+    	sdsfree(s);
+//        ERROR_LOG("No value set for header:%s", m_current_header_name);
+//        sdsfree(s);
+        return true;
     }
     m_current_header_name = s;
     return true;
@@ -35,9 +37,17 @@ bool HTTPMessage::AppendHeaderValue(sds s)
 {
     if (NULL == m_current_header_name)
     {
-        ERROR_LOG("Empty header name for value:%s", s);
-        sdsfree(s);
-        return false;
+    	if(m_headers.empty())
+    	{
+    		RROR_LOG("Empty header name for value:%s", s);
+    		return false;
+    	}
+    	HTTPHeader& header = *(m_headers.rbegin());
+    	header.value = sdscat(header.value, s);
+    	sdsfree(s);
+//        ERROR_LOG("Empty header name for value:%s", s);
+//        sdsfree(s);
+        return true;
     }
     HTTPHeader header(m_current_header_name, s);
     m_headers.push_back(header);

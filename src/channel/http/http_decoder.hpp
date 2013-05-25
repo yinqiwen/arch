@@ -42,7 +42,7 @@ namespace arch
                     void Clear()
                     {
                         decoding = false;
-                        ctx = NULL;
+                        //ctx = NULL;
                         cumulate.Clear();
                         message.Clear();
                     }
