@@ -39,7 +39,7 @@ bool HTTPMessage::AppendHeaderValue(sds s)
     {
     	if(m_headers.empty())
     	{
-    		RROR_LOG("Empty header name for value:%s", s);
+    		ERROR_LOG("Empty header name for value:%s", s);
     		return false;
     	}
     	HTTPHeader& header = *(m_headers.rbegin());
