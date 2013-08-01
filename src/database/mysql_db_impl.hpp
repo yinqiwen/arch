@@ -118,6 +118,7 @@ namespace arch
                         const std::string& db, const std::string& user,
                         const std::string& passwd);
                 void InstallLoadDataHandler(int (*local_infile_init)(void **, const char *, void *), int (*local_infile_read)(void *, char *, unsigned int), void (*local_infile_end)(void *), int (*local_infile_error)(void *, char*, unsigned int), void *userdata);
+                int LastInsertID();
                 ~MySQLConnection();
         };
     }

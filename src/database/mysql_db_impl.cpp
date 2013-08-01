@@ -229,6 +229,11 @@ void MySQLConnection::InstallLoadDataHandler(
 			local_infile_read, local_infile_end, local_infile_error, userdata);
 }
 
+int MySQLConnection::LastInsertID()
+{
+	return mysql_insert_id(m_handler);
+}
+
 int MySQLConnection::Connect(const Properties& props)
 {
 	std::string host;

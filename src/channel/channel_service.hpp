@@ -38,6 +38,7 @@ using arch::channel::socket::ServerSocketChannel;
 using arch::channel::socket::ClientSocketChannel;
 using arch::channel::socket::DatagramChannel;
 using arch::channel::fifo::FIFOChannel;
+using arch::channel::fifo::PipeChannel;
 using arch::channel::fifo::SharedMemoryFIFOChannel;
 using arch::channel::fifo::SharedMemoryFIFOChannel;
 using arch::channel::timer::TimerChannel;
@@ -121,6 +122,7 @@ namespace arch
                 ServerSocketChannel* NewServerSocketChannel();
                 DatagramChannel* NewDatagramSocketChannel();
                 InotifyChannel* NewInotifyChannel();
+                PipeChannel* NewPipeChannel(int readFd, int writeFD);
 
                 Channel* AttachChannel(Channel* ch);
                 bool DetachChannel(Channel* ch);
